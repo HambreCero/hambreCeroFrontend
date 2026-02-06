@@ -28,17 +28,33 @@ export default function IngredientList() {
   if (error) return <ErrorMessage message={error} />;
 
   return (
-    <section>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h2>Ingredients</h2>
-        <Link to="/ingredients/new">+ New ingredient</Link>
+    <section className="space-y-8">
+      {/* Cabecera: Ley de Continuidad y Proximidad */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-200 pb-4">
+        <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">
+          Ingredients
+        </h2>
+        <Link 
+          to="/ingredients/new" 
+          className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-full shadow-lg transition-all transform hover:scale-105 active:scale-95"
+        >
+          + New ingredient
+        </Link>
       </div>
 
-      <div style={{ display: 'grid', gap: 12 }}>
+      {/* Grid: Ley de Semejanza y Cierre */}
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((i) => (
           <IngredientCard key={i.id} ingredient={i} />
         ))}
       </div>
+      
+      {/* Estado vacío: Ley de la Figura y Fondo */}
+      {items.length === 0 && (
+        <div className="text-center py-20 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
+          <p className="text-gray-500">No ingredients found. Start by adding one!</p>
+        </div>
+      )}
     </section>
   );
 }
