@@ -54,42 +54,123 @@ export default function RecipeForm({ initialValues, onSubmit, submitting }) {
     }
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      {error && <p style={{ color: 'crimson' }}>{error}</p>}
+    const inputBase =
+    "w-full rounded-lg border border-border bg-background px-4 py-2 text-sm text-foreground " +
+    "focus:outline-none focus:ring-2 focus:ring-ring";
 
-      <label>Name</label><br />
-      <input name="name" value={form.name} onChange={handleChange} /><br /><br />
+  const labelBase = "text-sm font-bold text-secondary";
 
-      <label>Difficulty (1-5)</label><br />
-      <input type="number" min="1" max="5" name="difficulty" value={form.difficulty} onChange={handleChange} /><br /><br />
+   return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      {error && (
+        <div className="rounded-lg border border-border bg-muted p-3 text-sm font-semibold text-secondary">
+          {error}
+        </div>
+      )}
 
-      <label> Vegetarian </label>
-      <input type="checkbox" name="vegetarian" checked={form.vegetarian} onChange={handleChange} /> <br /><br />
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="sm:col-span-2">
+          <label className={labelBase}>Name</label>
+          <input name="name" value={form.name} onChange={handleChange} className={inputBase} />
+        </div>
 
-      <label>Estimated Cost (€)</label><br />
-      <input type="number" step="0.01" name="estimatedCost" value={form.estimatedCost} onChange={handleChange} /><br /><br />
+        <div>
+          <label className={labelBase}>Difficulty (1-5)</label>
+          <input
+            type="number"
+            min="1"
+            max="5"
+            name="difficulty"
+            value={form.difficulty}
+            onChange={handleChange}
+            className={inputBase}
+          />
+        </div>
 
-      <label>Last Modified (Date)</label><br />
-      <input 
-        type="date" 
-        name="lastModified" 
-        value={form.lastModified} 
-        max={today} 
-        onChange={handleChange} 
-      /><br /><br />
+        <div>
+          <label className={labelBase}>Servings</label>
+          <input
+            type="number"
+            min="1"
+            name="servings"
+            value={form.servings}
+            onChange={handleChange}
+            className={inputBase}
+          />
+        </div>
 
-      <label>Servings</label><br />
-      <input type="number" min="1" name="servings" value={form.servings} onChange={handleChange} /><br /><br />
+        <div className="sm:col-span-2 flex items-center gap-3">
+          <input
+            id="vegetarian"
+            type="checkbox"
+            name="vegetarian"
+            checked={form.vegetarian}
+            onChange={handleChange}
+            className="h-4 w-4 rounded border-border text-primary focus:ring-ring"
+          />
+          <label htmlFor="vegetarian" className="text-sm font-bold text-secondary">
+            Vegetarian
+          </label>
+        </div>
 
-      <label>Ingredient IDs (comma separated, e.g: 1, 2)</label><br />
-      <input type="text" name="ingredientIds" value={form.ingredientIds} placeholder="1, 2, 5" onChange={handleChange} /><br /><br />
+        <div>
+          <label className={labelBase}>Estimated Cost (€)</label>
+          <input
+            type="number"
+            step="0.01"
+            name="estimatedCost"
+            value={form.estimatedCost}
+            onChange={handleChange}
+            className={inputBase}
+          />
+        </div>
 
-      <label>Image</label><br />
-      <input type="file" name="image" disabled /><br /><br />
-      <button disabled={submitting} type="submit">
-        {submitting ? 'Saving...' : 'Save Recipe'}
-      </button>
+        <div>
+          <label className={labelBase}>Last Modified (Date)</label>
+          <input
+            type="date"
+            name="lastModified"
+            value={form.lastModified}
+            max={today}
+            onChange={handleChange}
+            className={inputBase}
+          />
+        </div>
+
+        <div className="sm:col-span-2">
+          <label className={labelBase}>Ingredient IDs (comma separated, e.g: 1, 2)</label>
+          <input
+            type="text"
+            name="ingredientIds"
+            value={form.ingredientIds}
+            placeholder="1, 2, 5"
+            onChange={handleChange}
+            className={inputBase}
+          />
+        </div>
+
+        <div className="sm:col-span-2">
+          <label className={labelBase}>Image</label>
+          <input
+            type="file"
+            name="image"
+            disabled
+            className="w-full rounded-lg border border-border bg-muted px-4 py-2 text-sm text-secondary/70"
+          />
+        </div>
+      </div>
+
+      <div className="flex justify-end">
+        <button
+          disabled={submitting}
+          type="submit"
+          className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-bold
+                     bg-primary text-primary-foreground shadow-soft hover:opacity-95 transition
+                     disabled:opacity-60"
+        >
+          {submitting ? "Saving..." : "Save Recipe"}
+        </button>
+      </div>
     </form>
   );
 }

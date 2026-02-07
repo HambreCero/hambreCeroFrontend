@@ -47,7 +47,7 @@ export default function RecipeDetail() {
   if (error) return <ErrorMessage message={error} />;
   if (!item) return <ErrorMessage message="Recipe not found" />;
 
-  // Ajuste de nombre boolean (según tu backend)
+ 
   const vegetarian = item.vegetarian ?? item.isVegetarian;
 
   return (
