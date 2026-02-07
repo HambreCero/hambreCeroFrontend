@@ -1,7 +1,7 @@
 export default function Loading({ text = "Loading..." }) {
   return (
-    <div style={{ padding: "1rem" }}>
-      <p>{text}</p>
+    <div className="p-4">
+      <p className="text-sm text-gray-700">{text}</p>
     </div>
   );
 }

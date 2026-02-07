@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import Layout from './components/common/Layout';
+import Layout from "./components/common/Layout";
 import Home from './pages/Home';
 import IngredientList from './pages/IngredientList';
 import IngredientDetail from './pages/IngredientDetail';
@@ -11,25 +11,25 @@ import RecipeCreate from './pages/RecipeCreate';
 import RecipeEdit from './pages/RecipeEdit';
 
 
-export default function App() {
+export default function App() { 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/ingredients" element={<IngredientList />} />
-          <Route path="/ingredients/new" element={<IngredientCreate />} />
-          <Route path="/ingredients/:id" element={<IngredientDetail />} />
-          <Route path="/ingredients/:id/edit" element={<IngredientEdit />} />
+    <Routes>
+      <Route element={<Layout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/ingredients" element={<IngredientList />} />
+              <Route path="/ingredients/new" element={<IngredientCreate />} />
+              <Route path="/ingredients/:id" element={<IngredientDetail />} />
+              <Route path="/ingredients/:id/edit" element={<IngredientEdit />} />
 
-          {/* placeholders para no romper */}
-          <Route path="/recipes" element={<RecipeList />} />
-          <Route path="/recipes/new" element={<RecipeCreate />} />
-          <Route path="/recipes/:id" element={<RecipeDetail />} />
-          <Route path="/recipes/:id/edit" element={<RecipeEdit />} />
+
+              <Route path="/recipes" element={<RecipeList />} />
+              <Route path="/recipes/new" element={<RecipeCreate />} />
+              <Route path="/recipes/:id" element={<RecipeDetail />} />
+              <Route path="/recipes/:id/edit" element={<RecipeEdit />} />
+
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
-
-        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
