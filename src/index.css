@@ -1,0 +1,17 @@
+@config "../tailwind.config.js";
+@import "tailwindcss";
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  a {
+    @apply text-primary hover:opacity-80 transition;
+  }
+}

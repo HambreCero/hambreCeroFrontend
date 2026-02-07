@@ -64,7 +64,6 @@ export default function IngredientDetail() {
           maxWidth: '520px',
         }}
       >
-        <p><strong>ID:</strong> {item.id}</p>
         <p><strong>Name:</strong> {item.name}</p>
         <p><strong>Calories:</strong> {item.calories}</p>
         <p><strong>Season:</strong> {item.season}</p>
