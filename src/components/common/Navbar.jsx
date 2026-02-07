@@ -28,14 +28,6 @@ export default function Navbar() {
           <NavLink to="/ingredients" className={linkClass}>
             Ingredients
           </NavLink>
-
-          <button
-            type="button"
-            className="ml-2 px-5 py-2 rounded-lg border border-border bg-surface text-secondary font-bold text-xs
-                       shadow-soft hover:bg-muted transition active:translate-y-0.5"
-          >
-            About us
-          </button>
         </div>
       </div>
     </nav>

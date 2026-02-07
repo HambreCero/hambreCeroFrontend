@@ -85,6 +85,8 @@ export default function RecipeForm({ initialValues, onSubmit, submitting }) {
       <label>Ingredient IDs (comma separated, e.g: 1, 2)</label><br />
       <input type="text" name="ingredientIds" value={form.ingredientIds} placeholder="1, 2, 5" onChange={handleChange} /><br /><br />
 
+      <label>Image</label><br />
+      <input type="file" name="image" disabled /><br /><br />
       <button disabled={submitting} type="submit">
         {submitting ? 'Saving...' : 'Save Recipe'}
       </button>
