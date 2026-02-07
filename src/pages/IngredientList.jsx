@@ -29,12 +29,12 @@ export default function IngredientList() {
 
   return (
     <section>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <h2>Ingredients</h2>
         <Link to="/ingredients/new">+ New ingredient</Link>
       </div>
 
-      <div style={{ display: 'grid', gap: 12 }}>
+      <div style={{ display: "grid", gap: 12 }}>
         {items.map((i) => (
           <IngredientCard key={i.id} ingredient={i} />
         ))}
